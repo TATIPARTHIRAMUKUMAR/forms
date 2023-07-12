@@ -1,0 +1,36 @@
+
+.container {
+  /* display: flex; */
+  align-items: center;
+  margin:15px;
+  width:100%;
+
+}
+
+.container label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  width: 57%;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.container input[type="text"] {
+  width:15%;
+  height: 20px;
+  flex: 0 0 200px;
+  margin-left: 20px;
+  
+}
+.container select[type="text"] {
+    width:15%;
+    height: 23px;
+    flex: 0 0 206px;
+    margin-left: 20px;
+  }
+  .required:after {
+    content:" *";
+    color: red;
+  }

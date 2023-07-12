@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+  height:100vh;
+  display:grid;
+  grid-template-rows:20% 80%;
+
+}
+.AppHeader{
+  background-color: rgb(205, 62, 62);
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+.AppHeaderText{
+  margin:5%;
+ 
+}
+.AppBody{
+  
+}
+
+
+
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
