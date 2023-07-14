@@ -42,7 +42,7 @@ export default function Labeltext({ inputdata, handleInputChange }) {
             type="checkbox"
             id="textfield"
             placeholder="Enter text"
-            onChange={(e) => handleInputChange(e, inputdata.name)}
+            onChange={(e) => handleInputChange(e,inputdata.name)}
           ></input>
           {inputdata.required && <span style={{ color: "red" }}>*</span>}
           <label for="textfield">{inputdata.labelname}</label>

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Form.css";
 import Labeltext from "../Widgets/Labeltext";
 import ReCAPTCHA from "react-google-recaptcha";
 
-export default function Form() {
+export default function Form({ setshowthankyou }) {
+  const [diablebutton, setdiablebutton] = useState(true);
+  const [mainData, setmainData] = useState({});
+
+ 
+
   let state = [
     "select State",
     "Andhra Pradesh",
@@ -120,27 +125,56 @@ export default function Form() {
       labelname: "I have read the official rules and Privacy Policy",
       // placeholder:"First Name",
       type: "checkbox",
+      name: "privacy",
       required: true,
     },
   ];
   function onChange(value) {
     console.log("Captcha value:", value);
   }
-  var obj = {};
 
   const handleInputChange = (e, key) => {
-    obj[key] = e.target.value;
-
+    setmainData((prevData) => ({
+      ...prevData,
+      [key]: e.target.value,
+    }));
   };
+
+  useEffect(() => {
+    console.log(mainData,"maindta1")
+    if (
+      mainData?.First_Name &&
+      mainData?.Last_Name &&
+      mainData?.Email &&
+      mainData.Confirm_Email &&
+      mainData.Address_1 &&
+      mainData.City &&
+      mainData.state &&
+      mainData.Zip &&
+      mainData.Phone_Number &&
+      mainData.privacy
+    )
+    setdiablebutton(false);
+  }, [mainData]);
+
   const handlesubmit = () => {
-    let s = Object.entries(obj).map(([key, value]) => {
+    let s = Object.entries(mainData).map(([key, value]) => {
       return key + " is " + value;
     });
     let str = "";
     for (let i of s) {
       str = str + i + "\n";
     }
-    alert(str);
+    // alert(str);
+    if (!diablebutton) {
+      setshowthankyou(false);
+      console.log("bye")
+    } 
+    if (diablebutton) {
+        console.log("elo")
+        alert("Please enter all the required fields to submit");
+
+    }
   };
 
   return (
@@ -169,6 +203,7 @@ export default function Form() {
             fontWeight: "bold",
             fontSize: "15px",
           }}
+        //   disabled={diablebutton}
           onClick={handlesubmit}
         >
           SUBMIT
